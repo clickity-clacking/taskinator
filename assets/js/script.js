@@ -7,10 +7,18 @@ var taskFormHandler = function(event) {
     var taskNameInput = document.querySelector("input[name='task-name']").value;
     var taskTypeInput = document.querySelector("select[name='task-type']").value;
 
+    //When used in a condition, empty strings and the number 0 are evaluated as falsy values. When we use the syntax !taskNameInput, we're checking to see if the taskNameInput variable is empty by asking if it's a falsy value.
+    if (!taskNameInput || !taskTypeInput) {
+        alert("You need to fill out the task form!");
+        return false;
+    }
+
     //package data as an obj
     var taskDataObj = {
         name: taskNameInput,
         type: taskTypeInput,
+    
+    formEl.reset();
     };
     
     //send it as an arg to createTaskEl
